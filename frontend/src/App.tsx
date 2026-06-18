@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { PublicLayout } from "@/components/layout/PublicLayout";
 import { OwnerLayout } from "@/components/layout/OwnerLayout";
 
+import { HomePage } from "@/pages/public/home-page";
 import { EventTypesPage as PublicEventTypesPage } from "@/pages/public/event-types-page";
 import { EventTypeDetailPage } from "@/pages/public/event-type-detail-page";
 import { BookingPage } from "@/pages/public/booking-page";
@@ -31,7 +32,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route element={<PublicLayout />}>
-            <Route path="/" element={<PublicEventTypesPage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/events" element={<PublicEventTypesPage />} />
             <Route path="/:slug" element={<EventTypeDetailPage />} />
             <Route path="/:slug/book" element={<BookingPage />} />
           </Route>

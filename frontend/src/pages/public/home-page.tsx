@@ -13,7 +13,10 @@ export function HomePage() {
       </p>
       <div className="flex flex-col sm:flex-row gap-4">
         <Button size="lg" asChild>
-          <Link to="/events">{UI.buttons.selectTime}</Link>
+          <Link to="/events">{UI.buttons.enterAsGuest}</Link>
+        </Button>
+        <Button size="lg" variant="outline" asChild>
+          <Link to="/owner">{UI.buttons.enterAsOwner}</Link>
         </Button>
       </div>
     </div>

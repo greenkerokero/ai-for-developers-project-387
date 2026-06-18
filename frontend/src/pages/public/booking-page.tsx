@@ -42,7 +42,7 @@ export function BookingPage() {
     mutate({ ...data, guestComment: data.guestComment || undefined }, {
       onSuccess: () => {
         toast.success("Бронирование успешно подтверждено!");
-        navigate("/");
+        navigate("/events");
       },
     });
   };
