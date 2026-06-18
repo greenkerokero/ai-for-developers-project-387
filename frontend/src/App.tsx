@@ -31,8 +31,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<HomePage />} />
+
           <Route element={<PublicLayout />}>
-            <Route path="/" element={<HomePage />} />
             <Route path="/events" element={<PublicEventTypesPage />} />
             <Route path="/:slug" element={<EventTypeDetailPage />} />
             <Route path="/:slug/book" element={<BookingPage />} />
