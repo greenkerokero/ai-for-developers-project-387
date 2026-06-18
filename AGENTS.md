@@ -296,3 +296,13 @@ Mutation-хук: `useMutation` + `queryClient.invalidateQueries` в `onSuccess`.
 |---|---|
 | `npm run compile` | Компиляция TypeSpec → OpenAPI |
 | `npm run watch` | Компиляция TypeSpec с watch-режимом |
+
+## 10. Формат коммитов
+
+При работе с этим репозиторием и создании коммитов ты **ОБЯЗАН** использовать формат Conventional Commits. 
+Перед выполнением `git commit`, убедись, что сообщение начинается с нужного префикса:
+- `feat:` — для нового функционала
+- `fix:` — для исправления багов
+- `refactor:` — для рефакторинга
+- `chore:` — для рутинных задач
+Пример правильного коммита: `feat: add user authentication layout`
