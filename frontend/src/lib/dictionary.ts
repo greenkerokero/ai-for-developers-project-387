@@ -9,6 +9,8 @@ export const UI = {
   },
   buttons: {
     selectTime: "Выбрать время",
+    enterAsGuest: "Войти как гость",
+    enterAsOwner: "Войти как владелец",
     adminLogin: "Вход для администратора",
     book: "Записаться",
     cancel: "Отмена",
