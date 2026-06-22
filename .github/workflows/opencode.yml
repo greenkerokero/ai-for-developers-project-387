@@ -22,6 +22,7 @@ jobs:
       contents: read
       pull-requests: read
       issues: read
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -33,7 +34,7 @@ jobs:
         env:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
         with:
-          model: opencode/claude-opus-4-8
+          model: 'opencode/claude-opus-4-8'
           instructions: >
             CRITICAL: You MUST use Conventional Commits format 
             for all git commits (e.g., feat:, fix:, docs:, chore:, refactor:). 

@@ -2,7 +2,8 @@ name: Lighthouse Performance Audit
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - 'main'
   schedule:
     - cron: '0 * * * *'
 
@@ -16,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
@@ -36,7 +37,7 @@ jobs:
       - name: Serve frontend
         working-directory: ./frontend
         run: npx serve -s dist -p 3000 &
-        
+
       - name: Wait for server to be ready
         run: npx wait-on http://localhost:3000
 
@@ -53,7 +54,7 @@ jobs:
           OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          model: opencode/claude-opus-4-8
+          model: 'opencode/claude-opus-4-8'
           prompt: |
             Read ./lighthouse-report.json.
             Compare LCP, CLS, INP with the values in docs/performance-baseline.md.
