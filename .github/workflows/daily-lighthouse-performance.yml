@@ -1,0 +1,58 @@
+name: Daily Lighthouse Performance Audit
+
+on:
+  schedule:
+    - cron: '18 2 * * *'
+
+jobs:
+  audit-and-analyze:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Build frontend
+        working-directory: ./frontend
+        run: npm run build
+
+      - name: Serve frontend
+        working-directory: ./frontend
+        run: npx serve -s dist -p 3000 &
+
+      - name: Wait for server to be ready
+        run: npx wait-on http://localhost:3000
+
+      - name: Run Lighthouse
+        run: |
+          npx lighthouse http://localhost:3000 \
+            --output=json \
+            --output-path=./lighthouse-report.json \
+            --chrome-flags="--headless --no-sandbox"
+
+      - name: Analyze with OpenCode
+        uses: anomalyco/opencode/github@latest
+        env:
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          model: 'opencode/claude-opus-4-8'
+          prompt: |
+            Read ./lighthouse-report.json.
+            Compare LCP, CLS, INP with the values in docs/performance-baseline.md.
+            For metrics that degraded by more than 10%, identify likely culprits in recent commits and create an issue with specific recommendations.
