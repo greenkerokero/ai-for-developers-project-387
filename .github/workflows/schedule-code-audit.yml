@@ -2,7 +2,7 @@ name: Hourly Code Audit
 
 on:
   schedule:
-    - cron: '10 * * * *'
+    - cron: '50 * * * *'
 
 jobs:
   opencode:
