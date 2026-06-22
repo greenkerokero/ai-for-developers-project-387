@@ -18,9 +18,9 @@ jobs:
       - name: Run OpenCode
         uses: anomalyco/opencode/github@latest
         env:
-          <KEY>: <VALUE>
+          OPENCODE_API_KEY: ${{ secrets.OPENCODE_API_KEY }}
         with:
-          model: <model>
+          model: opencode/claude-opus-4-8
           prompt: |
             Review the codebase for TODO, FIXME, and HACK comments.
             Group them by priority and create an issue with a summary.
