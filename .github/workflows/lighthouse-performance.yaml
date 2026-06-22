@@ -3,6 +3,8 @@ name: Lighthouse Performance Audit
 on:
   pull_request:
     branches: [ "main" ]
+  schedule:
+    - cron: '0 * * * *'
 
 jobs:
   audit-and-analyze:
