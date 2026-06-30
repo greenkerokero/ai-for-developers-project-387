@@ -1,8 +1,9 @@
 name: Hourly Code Audit
 
 on:
-  schedule:
-    - cron: '23 * * * *'
+  workflow_dispatch:
+#   schedule:
+#     - cron: '23 * * * *'
 
 jobs:
   opencode:

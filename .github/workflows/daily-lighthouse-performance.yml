@@ -1,8 +1,9 @@
 name: Daily Lighthouse Performance Audit
 
 on:
-  schedule:
-    - cron: '18 2 * * *'
+  workflow_dispatch:
+#   schedule:
+#     - cron: '18 2 * * *'
 
 jobs:
   audit-and-analyze:

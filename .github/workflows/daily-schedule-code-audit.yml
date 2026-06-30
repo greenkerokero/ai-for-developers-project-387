@@ -1,8 +1,9 @@
 name: Daily Code Audit
 
 on:
-  schedule:
-    - cron: '28 2 * * *'
+  workflow_dispatch:
+#   schedule:
+#     - cron: '28 2 * * *'
 
 jobs:
   opencode:
